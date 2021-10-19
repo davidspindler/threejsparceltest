@@ -37,8 +37,25 @@ export default class Sketch {
     this.addObjects();
     this.resize();
     this.render();
+    this.mouseEvents();
     this.setupResize();
     // this.settings();
+  }
+
+  mouseEvents(){
+    this.mouse = new THREE.Vector2();
+    let that= this;
+    function onMouseMove( event ) {
+
+      // calculate mouse position in normalized device coordinates
+      // (-1 to +1) for both components
+    
+      that.mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+      that.mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+      that.material.uniforms.mouse.value = that.mouse;
+    
+    }
+    window.addEventListener( 'mousemove', onMouseMove, false );
   }
 
   settings() {
@@ -59,6 +76,32 @@ export default class Sketch {
     this.height = this.container.offsetHeight;
     this.renderer.setSize(this.width, this.height);
     this.camera.aspect = this.width / this.height;
+
+    this.imageAspect = 1;
+    let a1; let a2;
+    if(this.height/this.width>this.imageAspect){
+      a1=(this.width/this.height)*this.imageAspect;
+      a2 = 1;
+    } else{
+      a1 = 1; 
+      a2=(this.height/this.width)/this.imageAspect;
+    }
+    this.material.uniforms.resolution.value.x = this.width;
+    this.material.uniforms.resolution.value.y = this.height;
+    this.material.uniforms.resolution.value.z = a1;
+    this.material.uniforms.resolution.value.w = a2;
+    
+
+    const dist = this.camera.position.z
+    const height = 1;
+    this.camera.fov = 2*(180/Math.PI)*Math.atan(height/(2*dist));
+
+    if (this.width/this.height>1){
+      this.plane.scale.x = this.camera.aspect;
+    } else {
+      this.plane.scale.y= 1/this.camera.aspect
+    }
+
     this.camera.updateProjectionMatrix();
   }
 
@@ -71,6 +114,7 @@ export default class Sketch {
       side: THREE.DoubleSide,
       uniforms: {
         time: { type: "f", value: 0 },
+        mouse: { type: "v2", value: new THREE.Vector2(0,0) },
         resolution: { type: "v4", value: new THREE.Vector4() },
         uvRate1: {
           value: new THREE.Vector2(1, 1)
