@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "engines": {
-    "npm": "6.14.13"
+    "npm": "6.14.13",
+    "node": "14.17.3"
   },
   "main": "index.html",
   "scripts": {
