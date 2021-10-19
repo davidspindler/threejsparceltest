@@ -1,0 +1,22 @@
+{
+  "name": "threejs-parcel-boilerplate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "start": "parcel index.html --open",
+    "build": "parcel build index.html"
+  },
+  "dependencies": {
+    "three": "0.110.0",
+    "three-orbit-controls": "^82.1.0"
+  },
+  "devDependencies": {
+    "@babel/core": "7.2.0",
+    "@babel/preset-env": "^1.7.0",
+    "parcel-bundler": "^1.12.5",
+    "parcel-plugin-glsl": "^0.1.0",
+    "parcel-plugin-json-url-loader": "^0.1.2"
+  },
+  "keywords": []
+}
