@@ -28,6 +28,20 @@ vec3 rotate(vec3 v, vec3 axis, float angle) {
 float sphere(vec3 p){
   return length(p) - 0.5;
 }
+float sdOctahedron( vec3 p)
+{
+  p = abs(p);
+  float m = p.x+p.y+p.z-0.5;
+  vec3 q;
+       if( 3.0*p.x < m ) q = p.xyz;
+  else if( 3.0*p.y < m ) q = p.yzx;
+  else if( 3.0*p.z < m ) q = p.zxy;
+  else return m*0.57735027;
+    
+  float k = clamp(0.5*(q.z-q.y+0.5),0.0,0.5); 
+  return length(vec3(q.x,q.y-0.5+k,q.z-k)); 
+}
+
 
 float sdBox( vec3 p, vec3 b ){
     vec3 q = abs(p) - b;
@@ -35,7 +49,7 @@ float sdBox( vec3 p, vec3 b ){
 }
 
 float SineCrazy(vec3 p) {
-  return 1. - (sin(p.x) + sin(p.y) + sin(p.z))/3.;
+  return 1. - (sin(p.x) - sin(p.y) + sin(p.z))/3.;
    // return 1.-(p.x*p.x - p.y +cos(p.z))/3.;
 }
 
@@ -43,11 +57,11 @@ float SineCrazy(vec3 p) {
 
 float scene(vec3 p){
   // return sphere(p);
-  vec3 p1 = rotate(p,vec3(1.,1.,1.),time/10.);
+  vec3 p1 = rotate(p,vec3(0.1,1.,0.1),time/10.);
   // return sdBox(p1, vec3(0.5,0.5,0.5));
-  float scale = 10. + 10.*sin(time/12.);
+  float scale = 10. + 5.*sin(time/12.);
 
-  return max(sphere(p1), (0.8 - SineCrazy(p1*scale))/scale);
+  return max(sdOctahedron(p1), (0.8 - SineCrazy(p1*scale))/scale);
 }
 vec3 getNormal(vec3 p){
 	
@@ -64,7 +78,7 @@ vec3 getNormal(vec3 p){
 
 
 vec3 GetColor(float amount) {
-    vec3 col = 0.5 + 0.5 * cos(6.28319 * (vec3(0.2,0.0,0.0) + amount * vec3(1.0,1.0,0.5)));
+    vec3 col = 0.5 + 0.5 * cos(6.28319 * (vec3(0.4,0.0,0.0) + amount * vec3(1.0,1.0,0.5)));
     return col*amount;
 }
 
@@ -86,7 +100,7 @@ void main()	{
   p.y -= mouse.y*0.05;
 
 
-  vec3 camPos = vec3(0.,0.,2. + 0.8*sin(time/8.));
+  vec3 camPos = vec3(-.5,0.,2. + 0.5*sin(time/8.));
   vec3 ray = normalize(vec3(p,-1.));
 
   vec3 rayPos = camPos;

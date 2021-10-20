@@ -1,0 +1,233 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,800;1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300&display=swap');
+*{
+    box-sizing: border-box;
+
+}
+body{
+    margin: 0;
+    background: #4b2c52;
+    color: white;
+    font-family: "Montserrat";
+}
+h1 {
+    color: white;
+}
+p{
+    color: white;
+}
+a{
+    color: white;
+    text-decoration: none;
+}
+ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+}
+.hero-wrapper {
+    background: url("/img/marita-kavelashvili-tree1.jpg");
+    background-size: cover;
+}
+.wrapper{
+    padding: 1.5em;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    color: black;
+    
+}
+.logo{
+    font-weight: bold;
+    color: black;
+}
+ul{
+    display: flex;
+    
+    
+}
+li a{
+    padding: 0 .6em;
+    color:black;
+}
+.hero-content{
+    margin: 4em 0 2em;
+    
+}
+.black{
+    color: black;
+}
+.subtitle{
+    margin-bottom: 0;
+    color:black;
+}
+.light-purple-wrapper{
+    background: #351F3A;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    justify-content: space-around;
+    margin-top: 2em;
+    
+}
+li{
+    margin-bottom: 1.5em;
+}
+strong{
+    font-size: 1.4em;
+}
+span{
+    display: block;
+    text-transform: uppercase;
+    font-size: .75em;
+}
+.arrows{
+    display: none;
+}
+.extended-wrapper {
+    padding: 0 1.5em 2em;
+    max-width: 1230px;
+    margin: 0 auto;
+}
+ul.carousal{
+    margin-bottom: 1em;
+   
+}
+/* li{
+    background: #422847;
+    padding: 1em;
+    margin-bottom: 1em;
+} */
+
+blockquote {
+    margin: 0;
+    font-size: .8em;
+    line-height: 1.8em;
+    margin-bottom: 1em;
+}
+
+cite {
+    color: #E379FF;
+    font-weight: bold;
+    font-size: .8em;
+    font-style: normal;
+    position: relative;
+    padding-left: 25px;
+}
+
+cite::before{
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 8px;
+    height: 1px;
+    width: 20px;
+    border-bottom: 1px solid white;
+}
+h2 {
+    text-align: center;
+    position: relative;
+}
+h2::before {
+    content: " ";
+    position: absolute;
+    height: 5px;
+    width: 30px;
+    background: #B728DC;
+    top: -.3em;
+}
+.companies{
+    text-align: center;
+   
+    animation: fade-up 650ms 800ms backwards;
+      
+}
+i{
+    color: white;
+}
+/* li{
+    margin: 2em 0;
+} */
+.skillshare{
+    width: 100px;
+}
+.ps{
+    width: 200px;
+}
+.about-me__link {
+    font-size: 50px;
+    color: white;
+    padding: 0 16px;
+  }
+@media (min-width: 500px) {
+    .companies {
+        display: grid;
+        grid-template-columns: repeat(2,auto);
+    }
+}
+
+@media (min-width: 750px){
+    body {
+        font-size: 20px;
+        
+    }
+    .wrapper {
+        padding: 1.5em 4em;
+
+    }
+    .carousal-container {
+        display: flex;
+    }
+    .arrows{
+        display: block;
+        width: 40px;
+        cursor: pointer;
+        margin: .5em;
+    }
+    .companies {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+@media (min-width: 950px){
+    body{
+    font-size: 25px;
+    }
+    .stats{
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+
+    }
+    .subtitle{
+    font-size: 1.2em;
+
+    }
+    h2{ text-align: left;
+    font-size: 2em;}
+    .v-padding {
+        padding: 4em;
+    }
+    .light-purple-wrapper{
+        padding-bottom: 4em;
+    }
+    .move-up {
+        margin-top: -7em;
+    }
+}
+@media(min-width: 1200px){
+    .stats li {
+        /* border-right: 1px solid rgb(124, 89, 148); */
+        padding-right: 5%;
+        
+    }
+    /* &:last-child{
+        border: 0;
+    } */
+}
