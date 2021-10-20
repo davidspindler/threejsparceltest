@@ -9,6 +9,7 @@
     <script src="https://kit.fontawesome.com/c8e4d183c2.js" crossorigin="anonymous"></script>
 </head>
 <body>
+    <div id="preloader"></div>
     <div class="hero-wrapper">
         <div class="wrapper">
             <header>
@@ -90,5 +91,17 @@
         </ul>
      
     </div>
+
+    <script>
+        var loader = document.getElementById("preloader");
+  
+        window.addEventListener("load", function(){
+          loader.style.display = "none";
+        })
+      </script>
 </body>
+
+
+
+
 </html>

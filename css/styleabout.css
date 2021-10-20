@@ -233,3 +233,11 @@ i{
         border: 0;
     } */
 }
+#preloader{
+    background: black url(/img/circle-loader-gif-2.gif) no-repeat center;
+    background-size: 15%;
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    z-index: 100;
+  }
