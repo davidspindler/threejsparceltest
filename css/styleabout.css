@@ -167,7 +167,7 @@ i{
     color: white;
     padding: 0 16px;
   }
-@media (min-width: 500px) {
+@media (min-width: 800px) {
     .companies {
         display: grid;
         grid-template-columns: repeat(2,auto);

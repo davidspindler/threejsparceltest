@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Parcel Sandbox</title>
+    <title>David Spindler</title>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="./src/styles.css" />
   </head>
 
   <body>
+    <div id="preloader"></div>
     <div class="wrapper">
       <main>
         <div class="frame">
@@ -25,8 +26,18 @@
     </div>
     
     <div id="container"></div>
-  
+
+    
+ 
     
     <script src="src/index.js"></script>
+
+    <script>
+      var loader = document.getElementById("preloader");
+
+      window.addEventListener("load", function(){
+        loader.style.display = "none";
+      })
+    </script>
   </body>
 </html>
