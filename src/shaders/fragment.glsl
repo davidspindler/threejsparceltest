@@ -31,7 +31,7 @@ float sphere(vec3 p){
 float sdOctahedron( vec3 p)
 {
   p = abs(p);
-  float m = p.x+p.y+p.z-0.8;
+  float m = p.x+p.y+p.z-0.5;
   vec3 q;
        if( 3.0*p.x < m ) q = p.xyz;
   else if( 3.0*p.y < m ) q = p.yzx;
